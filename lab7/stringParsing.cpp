@@ -13,17 +13,21 @@ int main(void) {
 
     for (int i = 0; i < name.length(); i++) {
         if (name[i] != ' ') {
-            userName[j] += name[i];
+            userName[j] += tolower(name[i]);
         } else {
             j += 1;
         }
     }
 
     for (int i = 0; i < 3; i++) {
-        cout << userName[i] << endl;
+        userName[i][0] = toupper(userName[i][0]);
     }
 
-    cout << lastNameFirst(userName);
+    cout << "First name: " << userName[0] << endl;
+    cout << "Middle name: " << userName[1] << endl;
+    cout << "Last name: " << userName[2] << endl << endl;
+    cout << "Your name is: " << lastNameFirst(userName) << endl;
+    cout << "---" << endl;
     return 0;
 }
 
