@@ -1,5 +1,5 @@
 #include <iostream>
-#include <string>
+#include <cstring>
 using namespace std;
 
 class rotN {
@@ -33,7 +33,11 @@ int rotN::getN() {
 string rotN::cipher(string arg) {
     string cipher = "";
     for (int i = 0; i < arg.length(); i++) {
-        cipher += arg[i] + getN();
+        if (arg[i] == ' ') {
+            cipher += ' ';
+            continue;
+        }
+        cipher += tolower(arg[i] + getN() - (arg[i] + getN() > 122 ? 25 : 0));
     }
     return cipher;
 }
@@ -41,7 +45,11 @@ string rotN::cipher(string arg) {
 string rotN::decipher(string arg) {
     string decipher = "";
     for (int i = 0; i < arg.length(); i++) {
-        decipher += arg[i] - getN();
+        if (arg[i] == ' ') {
+            decipher += ' ';
+            continue;
+        }
+        decipher += tolower(arg[i] - getN() + (arg[i] + getN() < 97 ? 25 : 0));
     }
     return decipher;
 }
