@@ -37,7 +37,9 @@ string rotN::cipher(string arg) {
             cipher += ' ';
             continue;
         }
-        cipher += tolower(arg[i] + getN() - (arg[i] + getN() > 122 ? 25 : 0));
+        cipher += char(((tolower(arg[i]) - 'a' + getN()) % 26) + 'a');
+        //tolower(arg[i] + getN() - (arg[i] + getN() > 122 ? 26 : 0));
+        //cipher += tolower(arg[i] + getN()) % 26;
     }
     return cipher;
 }
@@ -49,16 +51,20 @@ string rotN::decipher(string arg) {
             decipher += ' ';
             continue;
         }
-        decipher += tolower(arg[i] - getN() + (arg[i] + getN() < 97 ? 25 : 0));
+        decipher += char(((tolower(arg[i]) - 'a' - getN() + 26) % 26) + 'a');
+        //tolower(arg[i] - getN() + (arg[i] + getN() < 97 ? 26 : 0));
+        //decipher += tolower(arg[i] - getN()) % 26;
     }
     return decipher;
 }
 
 int main(void) {
 
+
+    string message = "This is a test";
     rotN rot13(13);
-    cout << rot13.cipher("This is a test") << endl;
-    cout << rot13.decipher(rot13.cipher("This is a test")) << endl;
+    cout << rot13.cipher(message) << endl;
+    cout << rot13.decipher(rot13.cipher(message)) << endl;
 
     return 0;
 }
