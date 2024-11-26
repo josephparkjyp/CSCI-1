@@ -6,7 +6,7 @@ using namespace std;
 class snowday {
 private:
 	string date;
-	double temp;
+	double temp;		
 	int depth;
 public:
 	snowday();
