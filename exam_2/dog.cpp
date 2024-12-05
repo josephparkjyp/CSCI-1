@@ -39,7 +39,7 @@ int main(void) {
     string breeds[] = {"Beagle", "Shepherd", "Retriever", "Chihuahua", "Mix"};
 
     for (int i = 0; i < 100; i++) {
-        dogs[i] = Dog(names[rand() % 5], 1 + rand() % 20, breeds[rand() % 5], 10000 + i);
+        dogs.push_back(Dog(names[rand() % 5],    1 + rand() % 20,     breeds[rand() % 5], 10000 + i));
     }
 
     printAllDogs(dogs);
