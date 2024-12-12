@@ -43,7 +43,9 @@ char letterGrade(double weightedAverage) {
         return 'B';
     } else if (weightedAverage >= 70) {
         return 'C';
-    } else {
+    } else if (weightedAverage >= 60) {
         return 'D';
+    } else {
+        return 'F'; 
     }
 }
